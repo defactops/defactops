@@ -32,6 +32,19 @@ Any server with [Docker](https://www.docker.com/) already installed
 3. Launch the server: \
 `docker compose --file docker-compose-defactops.yml --env-file .env.client up`
 
+## Helm
+
+1. Create a folder on your PC and copy the content of the ./helm folder
+2. Fill the values.yaml file with the values from your system. The variables definitions can be found in the docker-compose section above.
+3. Start the helm distribution with the following command
+```
+kubectl create namespace defactops
+helm repo add defactops http://
+helm repo update
+helm install -n defactops -f ./values.yaml defactops-client
+```
+
+
 # Supported platforms
 
 For the moment, only Gitlab and Jira are supported as CI/CD and issue trackers. We are working on adding other platforms, please let us know what would suit your needs.

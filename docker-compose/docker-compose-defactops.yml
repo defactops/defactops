@@ -13,10 +13,9 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
   defactops-ui:
-    image: "defactops/defactops-ui:1.0.13"
+    image: "defactops/defactops-ui:1.0.14"
     container_name: defactops-ui
     environment:
-      - DB_SERVER=postgres-service
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}

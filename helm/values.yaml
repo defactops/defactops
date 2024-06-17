@@ -1,0 +1,41 @@
+config:
+  data:
+    gitlab_project_id: "your-gitlab-project-number"
+    gitlab_environment_name: "Production"
+    jira_failure_label: "Regression"   
+
+secrets:
+  data:
+    # DefactOps
+    licence_token: "your-free-or-paid-license-key-from-defactops-website"
+
+    # Gitlab
+    gitlab_api_token: "your-gitlab-access-token"
+
+    # Jira
+    jira_token: "your-jira-access-token"
+
+ingress:
+  metadata:
+    name:  http-ingress 
+    annotations: {}
+  spec:
+    ingressClassName: nginx
+    hostname: ""
+    hostpath: /
+  tls: 
+    hostname: ""
+    secretName: ""
+
+postgresql:
+  global:
+    postgresql:
+      auth:
+        postgresPassword: "change-me-now!"
+        username: "postuser"
+        password: "change-me-now-too!"
+        database: "defactops-db"
+
+      service:
+        ports:
+          postgresql: "5432" 
