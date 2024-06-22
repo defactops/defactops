@@ -39,3 +39,21 @@ postgresql:
       service:
         ports:
           postgresql: "5432" 
+
+  primary:
+    initdbScripts:
+      init.sql: |
+        # This will be filled by the ConfigMap
+
+    extraVolumes:
+      - name: initdb-scripts
+        configMap:
+          name: defactops-config
+          defaultMode: 420
+          items:
+          - key: init.sql
+            path: init.sql
+
+    extraVolumeMounts:
+      - name: initdb-scripts
+        mountPath: /docker-entrypoint-initdb.d
