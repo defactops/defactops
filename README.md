@@ -39,7 +39,7 @@ Any server with [Docker](https://www.docker.com/) already installed
 3. Start the helm distribution with the following command
 ```
 kubectl create namespace defactops
-helm repo add defactops http://
+helm repo add defactops https://defactops.github.io/defactops-helm
 helm repo update
 helm install -n defactops -f ./values.yaml defactops-client
 ```
