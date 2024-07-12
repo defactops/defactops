@@ -30,7 +30,7 @@ services:
       - postgres-service
 
   defactops-app:
-    image: "defactops/defactops-backend:1.0.20"
+    image: "defactops/defactops-backend:1.0.21"
     container_name: defactops-backend
     environment:
       - GITLAB_API_TOKEN=${GITLAB_API_TOKEN}
