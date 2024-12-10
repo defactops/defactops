@@ -41,7 +41,7 @@ Any server with [Docker](https://www.docker.com/) already installed
 kubectl create namespace defactops
 helm repo add defactops https://defactops.github.io/defactops-helm
 helm repo update
-helm install -n defactops -f ./values.yaml defactops-client
+helm install -n defactops -f ./values.yaml defactops-release defactops/defactops
 ```
 
 
