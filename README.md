@@ -28,6 +28,7 @@ Any server with [Docker](https://www.docker.com/) already installed
 | GITLAB_ENVIRONMENT_NAME |  This is your "production" environment, from the Operate > Environment section in Gitlab | 
 | JIRA_TOKEN              | In Jira, go to your icon > Profile > Manage your account > Security. From there select "Create API token" and follow the instructions |
 | JIRA_FAILURE_LABEL      | This is a label to indicate that an issue was found after a release was launched in production. Simply add the label you choose to any issue. |
+| LEADTIME_START_EVENT    | Select how the leatime should be calculated. Choices are "commit" or "ticket-in-progress" |
 
 3. Launch the server: \
 `docker compose --file docker-compose-defactops.yml --env-file .env.client up`
@@ -36,7 +37,13 @@ Any server with [Docker](https://www.docker.com/) already installed
 
 1. Create a folder on your PC and copy the content of the ./helm folder
 2. Fill the values.yaml file with the values from your system. The variables definitions can be found in the docker-compose section above.
-3. Start the helm distribution with the following command
+3. Add the CloudNative postgres operator to postgres
+```
+helm repo add cloudnative-pg https://cloudnative-pg.github.io/charts
+helm repo update
+helm install cnpg cloudnative-pg/cloudnative-pg --namespace cloudnative-test --create-namespace
+```
+4. Start the helm distribution with the following command
 ```
 kubectl create namespace defactops
 helm repo add defactops https://defactops.github.io/defactops-helm
